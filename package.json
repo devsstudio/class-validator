@@ -1,0 +1,27 @@
+{
+  "name": "@devs-studio/class-validator",
+  "version": "1.0.3",
+  "description": "Validations like class-validator",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@JeanPaper:JeanPaper/devsstudio-class-validator.git"
+  },
+  "keywords": [
+    "validator",
+    "class-validator"
+  ],
+  "author": "Devs Studio",
+  "license": "ISC",
+  "dependencies": {
+    "@devs-studio/sunat": "^1.0.4",
+    "class-validator": "^0.14.0",
+    "moment": "^2.29.4",
+    "typescript": "^5.0.3"
+  },
+  "devDependencies": {}
+}
