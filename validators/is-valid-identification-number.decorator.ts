@@ -15,7 +15,7 @@ export class IsValidIdentificationNumberConstraint
     if (identification_number) {
       return validateNumber(identification_code, identification_number);
     } else {
-      return false;
+      return true;
     }
   }
 

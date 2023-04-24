@@ -12,7 +12,7 @@ export class IsValidIdentificationCodeConstraint
     if (identification_code) {
       return validateCode(identification_code);
     } else {
-      return false;
+      return true;
     }
   }
 
