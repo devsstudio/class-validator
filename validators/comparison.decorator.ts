@@ -13,7 +13,7 @@ export enum ComparisonOperator {
   NOT_EQUAL = "NOT_EQUAL",
 }
 
-@ValidatorConstraint({ async: true })
+@ValidatorConstraint()
 export class ComparisonConstraint
   implements ValidatorConstraintInterface {
   validate(leftOperand: any, args: ValidationArguments) {

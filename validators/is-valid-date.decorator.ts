@@ -5,7 +5,7 @@ import {
 } from 'class-validator';
 import moment from 'moment';
 
-@ValidatorConstraint({ async: true })
+@ValidatorConstraint()
 export class IsValidDateConstraint implements ValidatorConstraintInterface {
   validate(value: any, args: ValidationArguments) {
     return moment(value, "YYYY-MM-DD", true).isValid();
