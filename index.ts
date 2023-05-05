@@ -4,6 +4,7 @@ import { IsValidDateConstraint } from "./validators/is-valid-date.decorator";
 import { IsValidIdentificationCodeConstraint } from "./validators/is-valid-identification-code.decorator";
 import { IsValidIdentificationNumberConstraint } from "./validators/is-valid-identification-number.decorator";
 import { ArrayMinSizeConstraint } from "./validators/array-min-size.decorator";
+import { IsDecimalConstraint } from "./validators/is-decimal.decorator";
 
 export function Comparison(
     anotherProperty: string,
@@ -76,6 +77,21 @@ export function ArrayMinSize(
             options: validationOptions,
             constraints: [minSize, condition],
             validator: ArrayMinSizeConstraint,
+        });
+    };
+}
+
+export function IsDecimal(
+    maxDecimalPlaces: number,
+    validationOptions?: ValidationOptions,
+) {
+    return function (object: Object, propertyName: string) {
+        registerDecorator({
+            target: object.constructor,
+            propertyName: propertyName,
+            options: validationOptions,
+            constraints: [maxDecimalPlaces],
+            validator: IsDecimalConstraint,
         });
     };
 }
