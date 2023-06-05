@@ -17,13 +17,18 @@ export enum ComparisonOperator {
 export class ComparisonConstraint
   implements ValidatorConstraintInterface {
   validate(leftOperand: any, args: ValidationArguments) {
-    const [anotherProperty, operator] = args.constraints;
+    const [anotherProperty, operator, condition] = args.constraints;
+    const result = condition ? condition(args.object as any) : true;
     const rightperand = (args.object as any)[anotherProperty];
 
-    if (leftOperand) {
-      return this.compare(leftOperand, rightperand, operator);
+    if (result) {
+      if (leftOperand) {
+        return this.compare(leftOperand, rightperand, operator);
+      } else {
+        return false;
+      }
     } else {
-      return false;
+      return true;
     }
   }
 

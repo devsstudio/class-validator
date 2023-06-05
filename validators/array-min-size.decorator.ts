@@ -20,7 +20,7 @@ export class ArrayMinSizeConstraint
   }
 
   defaultMessage(args: ValidationArguments) {
-    const [minSize, condition] = args.constraints;
+    const [minSize] = args.constraints;
 
     return `${args.property} should contains at least ${minSize} elements`;
   }

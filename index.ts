@@ -5,10 +5,12 @@ import { IsValidIdentificationCodeConstraint } from "./validators/is-valid-ident
 import { IsValidIdentificationNumberConstraint } from "./validators/is-valid-identification-number.decorator";
 import { ArrayMinSizeConstraint } from "./validators/array-min-size.decorator";
 import { IsDecimalConstraint } from "./validators/is-decimal.decorator";
+import { ArithmeticComparisonConstraint, ArithmeticComparisonOperator } from "./validators/arithmetic-comparison.decorator";
 
 export function Comparison(
     anotherProperty: string,
     operator: ComparisonOperator,
+    condition?: Function,
     validationOptions?: ValidationOptions,
 ) {
     return function (object: Object, propertyName: string) {
@@ -16,8 +18,25 @@ export function Comparison(
             target: object.constructor,
             propertyName: propertyName,
             options: validationOptions,
-            constraints: [anotherProperty, operator],
+            constraints: [anotherProperty, operator, condition],
             validator: ComparisonConstraint,
+        });
+    };
+}
+
+export function ArithmeticComparison(
+    value: number,
+    operator: ArithmeticComparisonOperator,
+    condition?: Function,
+    validationOptions?: ValidationOptions,
+) {
+    return function (object: Object, propertyName: string) {
+        registerDecorator({
+            target: object.constructor,
+            propertyName: propertyName,
+            options: validationOptions,
+            constraints: [value, operator, condition],
+            validator: ArithmeticComparisonConstraint,
         });
     };
 }
