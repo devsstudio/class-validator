@@ -6,6 +6,7 @@ import { IsValidIdentificationNumberConstraint } from "./validators/is-valid-ide
 import { ArrayMinSizeConstraint } from "./validators/array-min-size.decorator";
 import { IsDecimalConstraint } from "./validators/is-decimal.decorator";
 import { ArithmeticComparisonConstraint, ArithmeticComparisonOperator } from "./validators/arithmetic-comparison.decorator";
+import { IsValidUbigeoConstraint } from "./validators/is-valid-ubigeo.decorator";
 
 export function Comparison(
     anotherProperty: string,
@@ -80,6 +81,20 @@ export function IsValidIdentificationNumber(
             options: validationOptions,
             constraints: [identificationCodeProperty],
             validator: IsValidIdentificationNumberConstraint,
+        });
+    };
+}
+
+export function IsValidUbigeo(
+    validationOptions?: ValidationOptions,
+) {
+    return function (object: Object, propertyName: string) {
+        registerDecorator({
+            target: object.constructor,
+            propertyName: propertyName,
+            options: validationOptions,
+            constraints: [],
+            validator: IsValidUbigeoConstraint,
         });
     };
 }

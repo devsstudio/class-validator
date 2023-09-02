@@ -1,6 +1,6 @@
 {
   "name": "@devs-studio/class-validator",
-  "version": "1.0.10",
+  "version": "1.0.12",
   "description": "Validations like class-validator",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -18,10 +18,9 @@
   "author": "Devs Studio",
   "license": "ISC",
   "dependencies": {
-    "@devs-studio/sunat": "^1.0.4",
+    "@devs-studio/sunat": "^1.0.10",
     "class-validator": "^0.14.0",
     "moment": "^2.29.4",
     "typescript": "^5.0.3"
-  },
-  "devDependencies": {}
+  }
 }
