@@ -22,7 +22,7 @@ export class ComparisonConstraint
     const rightperand = (args.object as any)[anotherProperty];
 
     if (result) {
-      if (leftOperand) {
+      if (leftOperand !== null && leftOperand !== undefined) {
         return this.compare(leftOperand, rightperand, operator);
       } else {
         return false;

@@ -21,7 +21,7 @@ export class ArithmeticComparisonConstraint
     const result = condition ? condition(args.object as any) : true;
 
     if (result) {
-      if (leftOperand) {
+      if (leftOperand !== null && leftOperand !== undefined) {
         return this.compare(leftOperand, value, operator);
       } else {
         return false;
