@@ -7,6 +7,9 @@ import { ArrayMinSizeConstraint } from "./validators/array-min-size.decorator";
 import { IsDecimalConstraint } from "./validators/is-decimal.decorator";
 import { ArithmeticComparisonConstraint, ArithmeticComparisonOperator } from "./validators/arithmetic-comparison.decorator";
 import { IsValidUbigeoConstraint } from "./validators/is-valid-ubigeo.decorator";
+import { IsValidCorrelativeConstraint } from "./validators/is-valid-correlative.decorator";
+import { IsValidDocumentSerieConstraint } from "./validators/is-valid-document-serie.decorator";
+import { IsValidSunatCodeConstraint } from "./validators/is-valid-sunat-code.decorator";
 
 export function Comparison(
     anotherProperty: string,
@@ -126,6 +129,55 @@ export function IsDecimal(
             options: validationOptions,
             constraints: [maxDecimalPlaces],
             validator: IsDecimalConstraint,
+        });
+    };
+}
+
+export function IsValidCorrelative(
+    fileCodeProperty: string,
+    sunatCodeProperty: string,
+    isElectronicProperty: string,
+    validationOptions?: ValidationOptions,
+) {
+    return function (object: Object, propertyName: string) {
+        registerDecorator({
+            target: object.constructor,
+            propertyName: propertyName,
+            options: validationOptions,
+            constraints: [fileCodeProperty, sunatCodeProperty, isElectronicProperty],
+            validator: IsValidCorrelativeConstraint,
+        });
+    };
+}
+
+export function IsValidDocumentSerie(
+    fileCodeProperty: string,
+    sunatCodeProperty: string,
+    isElectronicProperty: string,
+    validationOptions?: ValidationOptions,
+) {
+    return function (object: Object, propertyName: string) {
+        registerDecorator({
+            target: object.constructor,
+            propertyName: propertyName,
+            options: validationOptions,
+            constraints: [fileCodeProperty, sunatCodeProperty, isElectronicProperty],
+            validator: IsValidDocumentSerieConstraint,
+        });
+    };
+}
+
+export function IsValidSunatCode(
+    fileCodeProperty: string,
+    validationOptions?: ValidationOptions,
+) {
+    return function (object: Object, propertyName: string) {
+        registerDecorator({
+            target: object.constructor,
+            propertyName: propertyName,
+            options: validationOptions,
+            constraints: [fileCodeProperty],
+            validator: IsValidSunatCodeConstraint,
         });
     };
 }
