@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@JeanPaper:JeanPaper/devsstudio-class-validator.git"
+    "url": "https://github.com/devsstudio/class-validator.git"
   },
   "keywords": [
     "validator",
