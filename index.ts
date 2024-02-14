@@ -10,6 +10,7 @@ import { IsValidUbigeoConstraint } from "./validators/is-valid-ubigeo.decorator"
 import { IsValidCorrelativeConstraint } from "./validators/is-valid-correlative.decorator";
 import { IsValidDocumentSerieConstraint } from "./validators/is-valid-document-serie.decorator";
 import { IsValidSunatCodeConstraint } from "./validators/is-valid-sunat-code.decorator";
+import { FnComparisonConstraint } from "./validators/fn-comparison.decorator";
 
 export function Comparison(
     anotherProperty: string,
@@ -178,6 +179,22 @@ export function IsValidSunatCode(
             options: validationOptions,
             constraints: [fileCodeProperty],
             validator: IsValidSunatCodeConstraint,
+        });
+    };
+}
+
+export function FnComparison(
+    when: Function,
+    comparison?: Function,
+    validationOptions?: ValidationOptions,
+) {
+    return function (object: Object, propertyName: string) {
+        registerDecorator({
+            target: object.constructor,
+            propertyName: propertyName,
+            options: validationOptions,
+            constraints: [when, comparison],
+            validator: FnComparisonConstraint,
         });
     };
 }
