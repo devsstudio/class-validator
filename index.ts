@@ -11,6 +11,7 @@ import { IsValidCorrelativeConstraint } from "./validators/is-valid-correlative.
 import { IsValidDocumentSerieConstraint } from "./validators/is-valid-document-serie.decorator";
 import { IsValidSunatCodeConstraint } from "./validators/is-valid-sunat-code.decorator";
 import { FnComparisonConstraint } from "./validators/fn-comparison.decorator";
+import { IsUrlConstraint } from "./validators/is-url.decorator";
 
 export function Comparison(
     anotherProperty: string,
@@ -179,6 +180,20 @@ export function IsValidSunatCode(
             options: validationOptions,
             constraints: [fileCodeProperty],
             validator: IsValidSunatCodeConstraint,
+        });
+    };
+}
+
+export function IsURL(
+    validationOptions?: ValidationOptions,
+) {
+    return function (object: Object, propertyName: string) {
+        registerDecorator({
+            target: object.constructor,
+            propertyName: propertyName,
+            options: validationOptions,
+            constraints: [],
+            validator: IsUrlConstraint,
         });
     };
 }
