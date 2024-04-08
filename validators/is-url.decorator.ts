@@ -12,7 +12,11 @@ export interface IsUrlValidationOptions {
 @ValidatorConstraint()
 export class IsUrlConstraint implements ValidatorConstraintInterface {
   validate(value: string, args: ValidationArguments) {
-    return isURL(value.replace(/\s/g, '%20'));
+    if (value) {
+      return isURL(value.replace(/\s/g, '%20'));
+    } else {
+      return true;
+    }
   }
 
   defaultMessage(args: ValidationArguments) {
