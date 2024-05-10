@@ -12,6 +12,7 @@ import { IsValidDocumentSerieConstraint } from "./validators/is-valid-document-s
 import { IsValidSunatCodeConstraint } from "./validators/is-valid-sunat-code.decorator";
 import { FnComparisonConstraint } from "./validators/fn-comparison.decorator";
 import { IsUrlConstraint } from "./validators/is-url.decorator";
+import { IsValidTypeConstraint } from "./validators/is-valid-type.decorator";
 
 export function Comparison(
     anotherProperty: string,
@@ -210,6 +211,28 @@ export function FnComparison(
             options: validationOptions,
             constraints: [when, comparison],
             validator: FnComparisonConstraint,
+        });
+    };
+}
+
+export function IsValidType(
+    type: 'number' |
+        'int' |
+        'decimal' |
+        'string' |
+        'boolean' |
+        'array' |
+        'alphanumeric' |
+        'date',
+    validationOptions?: ValidationOptions,
+) {
+    return function (object: Object, propertyName: string) {
+        registerDecorator({
+            target: object.constructor,
+            propertyName: propertyName,
+            options: validationOptions,
+            constraints: [type],
+            validator: IsValidTypeConstraint,
         });
     };
 }

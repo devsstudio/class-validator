@@ -1,6 +1,6 @@
 {
   "name": "@devs-studio/class-validator",
-  "version": "1.0.18",
+  "version": "1.0.20",
   "description": "Validations like class-validator",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
